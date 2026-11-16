@@ -3,6 +3,11 @@ body {
   overflow: hidden; 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
   background: #000; 
+  transition: background 0.3s ease;
+}
+
+body.light-mode {
+  background: #e8eaed;
 }
 
 #canvas-container { 
@@ -10,35 +15,33 @@ body {
   height: 100vh; 
 }
 
-/* UI */
+/* UI Modo Oscuro (por defecto) */
 #ui {
   position: absolute; 
   top: 20px; 
   left: 20px; 
   color: #e1e1e1;
-  background: rgba(10, 10, 12, 0.65); 
-  border-left: 2px solid #8a2be2; 
-  border-radius: 2px; 
+  background: rgba(10, 10, 12, 0.72); 
+  border-left: 3px solid #8a2be2; 
+  border-radius: 4px; 
   width: 270px; 
   font-size: 12px; 
   pointer-events: auto;
-  box-shadow: none; 
-  padding: 10px 14px;
+  padding: 12px 14px;
   backdrop-filter: blur(8px);
   z-index: 100;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
-
 
 .obra-title {
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: #c792ea;
   margin: 0 0 6px 0;
 }
 
-/* Desplegable */
 details {
   margin: 0;
   padding: 0;
@@ -51,14 +54,12 @@ summary {
   user-select: none;
   outline: none;
   color: #e0e0e0;
-  transition: color 0.2s;
 }
 
 summary:hover {
   color: #dfb3ff;
 }
 
-/* Contenido dentro de la caja al abrir */
 .config-content {
   margin-top: 10px;
   display: flex;
@@ -73,7 +74,6 @@ summary:hover {
   font-size: 11px;
 }
 
-/* Botón principal */
 .btn {
   background: #6e5288; 
   color: #ffffff; 
@@ -95,7 +95,6 @@ summary:hover {
   transform: scale(0.98);
 }
 
-/* sliders */
 .slider-container {
   display: flex;
   flex-direction: column;
@@ -111,4 +110,33 @@ summary:hover {
   cursor: pointer;
   width: 100%;
   accent-color: #daacf1;
+}
+
+/* UI Modo Claro */
+body.light-mode #ui {
+  background: rgba(255, 255, 255, 0.88);
+  color: #222226;
+  border-left: 3px solid #6a1b9a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .obra-title {
+  color: #6a1b9a;
+}
+
+body.light-mode summary {
+  color: #1f1f24;
+}
+
+body.light-mode summary:hover {
+  color: #6a1b9a;
+}
+
+body.light-mode .config-content p,
+body.light-mode .slider-container label {
+  color: #44444c;
+}
+
+body.light-mode .slider-container input[type="range"] {
+  accent-color: #6a1b9a;
 }
